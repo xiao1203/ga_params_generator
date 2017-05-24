@@ -58,4 +58,4 @@ class Generator
 end
 
 
-Generator.new(100, 5).execute
+Generator.new(50, 5).execute
