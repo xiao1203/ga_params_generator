@@ -32,7 +32,16 @@ class Generator
       @genes_ary = create_next_generation(@genes_ary)
       @generation_count += 1
 
-      break if @generation_count == 100
+      if @generation_count == 100
+        ga_log
+
+        puts "========================="
+        puts "【最終結果】"
+        puts "試行世代数:#{@generation_count}世代"
+        puts "最適パラメータ：第一位：#{@genes_ary.first.decode}"
+        puts "========================="
+        break
+      end
     end
 
   end
@@ -44,7 +53,7 @@ class Generator
     @genes_ary.each do |gene|
       puts "遺伝子コード： #{gene.code} 評価値： #{gene.score} "
     end
-    puts "---------------------------------------------------------------------"
+    puts "--------------------------------------------------------------"
   end
 end
 
