@@ -5,6 +5,9 @@ module NextGenerationModule
   def create_next_generation(genes_ary)
     parent_genes_ary = roulette(genes_ary)
     elites_count = (genes_ary.size * 0.05).to_i
+    if elites_count.zero?
+      elites_count = 1
+    end
 
     child_genes_ary = []
     (genes_ary.size/2).times do |index|
@@ -20,7 +23,7 @@ module NextGenerationModule
       child_genes_ary.delete_at(rand(child_genes_ary.size))
     end
 
-    child_genes_ary += genes_ary[0...5]
+    child_genes_ary += genes_ary[0...elites_count]
 
     child_genes_ary.sort! do |a, b|
       b.score <=> a.score
